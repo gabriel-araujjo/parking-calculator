@@ -102,7 +102,7 @@ public class PaymentRule {
                 hourlyPrice.put(1, 200L);
 
                 dailyPrice.put(1, 5000L);
-                dailyPrice.put(8, 3000L);
+                dailyPrice.put(7, 3000L);
 
                 rules.addSchedule(Duration.ofHours(1), hourlyPrice);
                 rules.addSchedule(Duration.ofDays(1), dailyPrice);
@@ -110,7 +110,7 @@ public class PaymentRule {
             case LongTerm:
                 dailyPrice.put(0, 7000L);
                 dailyPrice.put(1, 5000L);
-                dailyPrice.put(8, 3000L);
+                dailyPrice.put(7, 3000L);
 
                 monthlyPrice.put(1, 50000L);
 
@@ -121,8 +121,8 @@ public class PaymentRule {
                 weeklyPrice.put(0, 50000L);
                 weeklyPrice.put(1, 0L);
 
-                dailyPrice.put(8, 10000L);
-                dailyPrice.put(15, 8000L);
+                dailyPrice.put(7, 10000L);
+                dailyPrice.put(14, 8000L);
 
                 rules.addSchedule(Duration.ofDays(1), dailyPrice);
                 rules.addSchedule(Duration.ofDays(7), weeklyPrice);
