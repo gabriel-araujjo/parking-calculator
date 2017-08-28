@@ -39,8 +39,8 @@ public class CalculatorTest
                 {"1998.01.16 20:00", "1998.01.17 20:00", ShortTerm, 54.00f}, // TC_005 - a day
                 {"1998.01.16 20:00", "1998.01.17 20:01", ShortTerm, 106.00f}, // TC_006 - a day and a minute
                 {"1998.01.16 20:00", "1998.01.23 20:00", ShortTerm, 642.00f}, // TC_007 - a week
-                {"1998.01.16 20:00", "1998.01.23 20:01", ShortTerm, 694.00f}, // TC_008 - a week and a minute
-                {"1998.01.16 20:00", "1998.01.24 20:01", ShortTerm, 772.00f}, // TC_009 - a week, a day and a minute
+                {"1998.01.16 20:00", "1998.01.23 20:01", ShortTerm, 674.00f}, // TC_008 - a week and a minute
+                {"1998.01.16 20:00", "1998.01.24 20:01", ShortTerm, 752.00f}, // TC_009 - a week, a day and a minute
                 // Testing LongTerm parking lot
                 {"1998.01.16 20:00", "1998.01.16 20:00", LongTerm, 0.00f}, // TC_010 - nothing
                 {"1998.01.16 20:00", "1998.01.16 20:01", LongTerm, 70.00f}, // TC_011 - one minute
