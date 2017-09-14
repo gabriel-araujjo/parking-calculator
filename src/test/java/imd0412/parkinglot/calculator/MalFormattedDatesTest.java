@@ -1,7 +1,7 @@
 package imd0412.parkinglot.calculator;
 
 import imd0412.parkinglot.exception.DateFormatException;
-import imd0412.parkinglot.exception.InvalidDataException;
+import imd0412.parkinglot.exception.InvalidDateException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import static imd0412.parkinglot.ParkingLotType.VIP;
 @RunWith(Parameterized.class)
 public class MalFormattedDatesTest {
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
 
 
     @Parameters(name = "{0}")
@@ -47,15 +47,21 @@ public class MalFormattedDatesTest {
 
     /* TC_015 */
     @Test
-    public void testMalFormattedCheckIn() throws InvalidDataException, DateFormatException {
+    public void testMalFormattedCheckIn() throws InvalidDateException, DateFormatException {
         thrown.expect(DateFormatException.class);
         calculator.calculateParkingCost(date, "2018.12.31 23:59", VIP);
     }
 
     /* TC_016 */
     @Test
-    public void testMalFormattedCheckOut() throws InvalidDataException, DateFormatException {
+    public void testMalFormattedCheckOut() throws InvalidDateException, DateFormatException {
         thrown.expect(DateFormatException.class);
         calculator.calculateParkingCost("1970.01.01 00:00", date, VIP);
+    }
+
+    @Test
+    public void testMalFormattedCheckInAndOut() throws InvalidDateException, DateFormatException {
+        thrown.expect(DateFormatException.class);
+        calculator.calculateParkingCost(date, date, VIP);
     }
 }

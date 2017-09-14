@@ -1,5 +1,5 @@
 package imd0412.parkinglot.exception;
 
-public enum InvalidDataType {
+public enum InvalidDateType {
 	InvalidYear, InvalidMonth, InvalidDay, NonexistentDate
 }

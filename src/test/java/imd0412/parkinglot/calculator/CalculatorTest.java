@@ -2,9 +2,7 @@ package imd0412.parkinglot.calculator;
 
 import imd0412.parkinglot.ParkingLotType;
 import imd0412.parkinglot.exception.DateFormatException;
-import imd0412.parkinglot.exception.InvalidDataException;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
+import imd0412.parkinglot.exception.InvalidDateException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +12,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 import static imd0412.parkinglot.ParkingLotType.LongTerm;
 import static imd0412.parkinglot.ParkingLotType.ShortTerm;
@@ -87,7 +84,7 @@ public class CalculatorTest
     }
 
 	@Test
-	public void testCalcParkingCost() throws InvalidDataException, DateFormatException {
+	public void testCalcParkingCost() throws InvalidDateException, DateFormatException {
 		assertThat(calculator.calculateParkingCost(checkIn, checkOut, parking), is(expectedPrice));
 	}
 }

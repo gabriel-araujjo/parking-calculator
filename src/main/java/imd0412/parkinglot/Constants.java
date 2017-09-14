@@ -1,6 +1,5 @@
 package imd0412.parkinglot;
 
-import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -12,14 +11,11 @@ public class Constants {
 
 	public static final Pattern DATE_PATTERN;
 
-	public static final SimpleDateFormat DATE_FORMATTER;
 
-	public static Set<Integer> MONTHS_31 = new HashSet<>();
+	public static final Set<Integer> MONTHS_31 = new HashSet<>();
 
 	static {
 		DATE_PATTERN = Pattern.compile(VALID_DATE_REGEX);
-
-		DATE_FORMATTER = new SimpleDateFormat(Constants.VALID_DATE_FORMAT);
 
 		MONTHS_31.add(1);
 		MONTHS_31.add(3);

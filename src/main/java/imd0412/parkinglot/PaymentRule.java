@@ -26,7 +26,7 @@ public class PaymentRule {
         return cost / 100.00f;
     }
 
-    protected void addSchedule(Duration dur, Map<Integer, Long> periodPriceScheme) {
+    private void addSchedule(Duration dur, Map<Integer, Long> periodPriceScheme) {
         TreeMap<Integer, Long> prices = new TreeMap<>(Collections.reverseOrder());
         prices.putAll(periodPriceScheme);
         priceScheme.put(dur, prices);

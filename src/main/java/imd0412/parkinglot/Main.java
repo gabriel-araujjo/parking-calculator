@@ -1,11 +1,18 @@
 package imd0412.parkinglot;
 
 import imd0412.parkinglot.calculator.Calculator;
-import org.kohsuke.args4j.*;
+import imd0412.parkinglot.exception.DateFormatException;
+import imd0412.parkinglot.exception.InvalidDateException;
+import org.kohsuke.args4j.Argument;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
+import org.kohsuke.args4j.ParserProperties;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
-public class Main {
+class Main {
 
     @Option(name="-t", aliases = {"--type"}, usage = "Type of parking lot", required = true)
     private ParkingLotType type;
@@ -13,19 +20,21 @@ public class Main {
     @Argument
     private List<String> arguments;
 
-    private void usage(CmdLineParser parser) {
-        System.err.println("USAGE:");
-        System.err.println();
-        System.err.println(" java -jar ParkingLotCalculator -t <ShortTerm|LongTerm|VIP> <checkin> <checkout>");
-        System.err.println();
-        System.err.println("ARGS:");
-        System.err.println();
-        parser.printUsage(System.err);
-        System.err.println();
-        System.err.println(" checkin and checkout are in format \"" + Constants.VALID_DATE_FORMAT + "\"");
-        System.err.println();
-        System.err.println("Ex.: java -jar ParkingLotCalculator -t VIP \"2017.08.20 20:10\" \"2017.09.01 10:10\"");
-        System.exit(1);
+    private String usage(CmdLineParser parser) {
+        ByteArrayOutputStream outBuffer = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(outBuffer);
+        out.println("USAGE:");
+        out.println();
+        out.println(" java -jar ParkingLotCalculator -t <ShortTerm|LongTerm|VIP> <checkin> <checkout>");
+        out.println();
+        out.println("ARGS:");
+        out.println();
+        parser.printUsage(out);
+        out.println();
+        out.println(" checkin and checkout are in format \"" + Constants.VALID_DATE_FORMAT + "\"");
+        out.println();
+        out.println("Ex.: java -jar ParkingLotCalculator -t VIP \"2017.08.20 20:10\" \"2017.09.01 10:10\"");
+        return new String(outBuffer.toByteArray());
     }
 
     private void doMain(String[] args){
@@ -34,19 +43,24 @@ public class Main {
 
         try {
             parser.parseArgument(args);
-            if (arguments.size() < 2)
+            if (arguments.size() < 2) {
                 throw new IllegalArgumentException("Check in and checkout args are necessary.");
+            }
             float price = new Calculator().calcParkingCost(arguments.get(0), arguments.get(1), type);
-            System.out.format("Parking total price = %.2f BRL ", price);
+            System.out.format("Parking total price = %.2f BRL", price);
+            System.out.println();
+        } catch (InvalidDateException |DateFormatException e) {
+            System.err.println(e.getMessage()+"\n");
+            System.err.print(usage(parser));
+            System.exit(1);
         } catch (Exception e) {
-            usage(parser);
+            System.err.print(usage(parser));
+            System.exit(1);
         }
-
-
-        System.out.println();
     }
 
 	public static void main(String[] args) throws Exception {
 		new Main().doMain(args);
+		System.exit(0);
 	}
 }
