@@ -127,6 +127,7 @@ public class MainTest {
     @Test
     public void main() throws Exception {
         exit.expectSystemExitWithStatus(expectedExitCode);
+        System.out.println("args = " + String.join(", ", args));
         Main.main(args);
     }
 
