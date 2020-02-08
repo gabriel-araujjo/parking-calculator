@@ -127,8 +127,13 @@ public class MainTest {
     @Test
     public void main() throws Exception {
         exit.expectSystemExitWithStatus(expectedExitCode);
-        System.out.println("args = " + String.join(", ", args));
         Main.main(args);
+        // If main exit normally, but not call exit(0), that is not an error
+        // Because this should happens inplicitly.
+        // However exit takes the absent of a System.exit call as an error.
+        // To fix that, we call a System.exit(0) if main nether threw any
+        // exception nor call System.exit 
+        System.exit(0);
     }
 
     private static String usage() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
