@@ -34,6 +34,11 @@ public class MainTest {
                 // args, stdout, stderr, exit code
                 {"[NO ARGS]", new String[]{}, "", usage(), 1},
                 {
+                   "-t VIP \"2017.08.20 20:10\"",
+                   new String[]{"-t", "VIP", "2017.08.20 20:10"},
+                   "", usage(), 1
+                },
+                {
                     "-t VIP \"2017.08.20 20:10\" \"2017.09.01 10:10\"",
                     new String[]{"-t", "VIP", "2017.08.20 20:10", "2017.09.01 10:10"},
                     "Parking total price = 1000.00 BRL\n", "", 0
