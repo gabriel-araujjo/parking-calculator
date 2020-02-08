@@ -48,6 +48,7 @@ public class InvalidDatesTest {
                 {"check out = 2001.09.31", "1970.01.01 00:00", "1970.09.31 00:00", NonexistentDate}, // TC_023 - Nonexistent check out
                 {"check out = 2001.11.31", "1970.11.31 00:00", "1970.09.31 00:00", NonexistentDate}, // TC_023 - Nonexistent check out
                 {"check in = 1970.13.31", "1970.13.31 00:00", "1970.09.31 00:00", InvalidMonth}, // TC_025 - Input invalid
+                {"check in = 1970.00.31", "1970.00.31 00:00", "1970.09.31 00:00", InvalidMonth}, // TC_025 - Input invalid
                 {"check in = 1970.12.00", "1970.12.00 00:00", "1970.09.31 00:00", InvalidDay}, // TC_025 - Input invalid
                 {"check in = 1970.12.32", "1970.12.32 00:00", "1970.09.31 00:00", InvalidDay}, // TC_025 - Input invalid
                 {"check in = 1970.12.31 24:00", "1970.12.31 24:00", "1970.09.31 00:00", NonexistentDate}, // TC_025 - Input invalid

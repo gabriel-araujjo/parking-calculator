@@ -87,7 +87,7 @@ public class Calculator {
 		int minute = Integer.parseInt(dateTimeMatcher.group(5));
 
 		if (month > 12 || month < 1) {
-			throw new InvalidDateException("Month" + month +  " out of range", InvalidDateType.InvalidMonth);
+			throw new InvalidDateException("Month " + month +  " out of range", InvalidDateType.InvalidMonth);
 		}
 
 		boolean leapYear = year % 400 == 0 || year % 4 == 0 && year % 100 != 0;
@@ -104,11 +104,11 @@ public class Calculator {
 			throw new InvalidDateException("" + year + "." + month + "." + day + " does not exists", InvalidDateType.NonexistentDate);
 		}
 
-		if (hour < 0 | hour > 23) {
+		if (hour > 23) {
 		    throw new InvalidDateException("" + hour + " is not a valid hour", InvalidDateType.NonexistentDate);
         }
 
-        if (minute < 0 | minute > 59) {
+        if (minute > 59) {
             throw new InvalidDateException("" + minute + " is not a valid minute", InvalidDateType.NonexistentDate);
         }
 

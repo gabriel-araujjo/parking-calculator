@@ -75,6 +75,12 @@ public class MainTest {
                         1
                 },
                 {
+                        "-t vip \"1900.00.20 20:10\" \"1900.09.01 10:10\"",
+                        new String[]{"-t", "vip", "1900.00.20 20:10", "1900.09.01 10:10"},
+                        "", "Month 0 out of range\n\n"+usage(),
+                        1
+                },
+                {
                         "-t LongTerm \"1998.01.16 20:00\" \"1998.02.15 20:01\"",
                         new String[]{"-t", "LongTerm", "1998.01.16 20:00", "1998.02.15 20:01"},
                         "Parking total price = 1590.00 BRL\n", "", 0
