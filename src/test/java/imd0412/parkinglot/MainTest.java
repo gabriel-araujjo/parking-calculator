@@ -49,6 +49,22 @@ public class MainTest {
                         "Parking total price = 1000.00 BRL\n", "", 0
                 },
                 {
+                        "-t vip \"2000.08.20 20:10\" \"2000.09.01 10:10\"",
+                        new String[]{"-t", "vip", "2000.08.20 20:10", "2000.09.01 10:10"},
+                        "Parking total price = 1000.00 BRL\n", "", 0
+                },
+                {
+                        "-t vip \"2004.08.20 20:10\" \"2004.09.01 10:10\"",
+                        new String[]{"-t", "vip", "2004.08.20 20:10", "2004.09.01 10:10"},
+                        "Parking total price = 1000.00 BRL\n", "", 0
+                },
+                {
+                        "-t vip \"1900.08.20 20:10\" \"1900.09.01 10:10\"",
+                        new String[]{"-t", "vip", "1900.08.20 20:10", "1900.09.01 10:10"},
+                        "", "Check in year (1900) out of valid range [1970, 2017].\n\n"+usage(),
+                        1
+                },
+                {
                         "-t LongTerm \"1998.01.16 20:00\" \"1998.02.15 20:01\"",
                         new String[]{"-t", "LongTerm", "1998.01.16 20:00", "1998.02.15 20:01"},
                         "Parking total price = 1590.00 BRL\n", "", 0
