@@ -54,6 +54,16 @@ public class MainTest {
                         "Parking total price = 1000.00 BRL\n", "", 0
                 },
                 {
+                        "-t vip \"2000.02.30 20:10\" \"2000.09.01 10:10\"",
+                        new String[]{"-t", "vip", "2000.02.30 20:10", "2000.09.01 10:10"},
+                        "", "2000.2.30 does not exists\n\n"+usage(), 1
+                },
+                {
+                        "-t longterm \"2000.01.16 20:00\" \"2000.02.15 20:01\"",
+                        new String[]{"-t", "longterm", "2000.01.16 20:00", "2000.02.15 20:01"},
+                        "Parking total price = 1590.00 BRL\n", "", 0
+                },
+                {
                         "-t vip \"2004.08.20 20:10\" \"2004.09.01 10:10\"",
                         new String[]{"-t", "vip", "2004.08.20 20:10", "2004.09.01 10:10"},
                         "Parking total price = 1000.00 BRL\n", "", 0
